@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import Navbar from "../layouts/Navbar";
 import HomeProjectCard from "../components/HomeProjectCard";
 import HomeHero from "../layouts/HomeHero";
@@ -12,9 +12,12 @@ export default function Home() {
     offset: ["start start", "end end"],
   });
 
-  // Map vertical scroll (0 to 1) to horizontal translation (0% to -66.666%)
-  // 3 cards = 300vw. To show the last card, we need to shift left by 200vw. (200 / 300 = 66.666%)
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-66.66666%"]);
+  // Apply a smooth spring to the raw transform value to eliminate jitter during fast mobile snapping
+  const x = useSpring(useTransform(scrollYProgress, [0, 1], ["0%", "-66.66666%"]), {
+    stiffness: 100,
+    damping: 20,
+    mass: 0.5,
+  });
 
   return (
     <div className="flex flex-col min-h-screen">
