@@ -15,7 +15,7 @@ export default function HomeProjectCard({
         style={{ backgroundImage: `url(${bgImage})` }}
       />
       
-      {/* Dark gradient overlay so text is readable */}
+      {/* Subtle dark gradient overlay so text is readable */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10" />
 
       {/* Content Container */}
@@ -30,10 +30,10 @@ export default function HomeProjectCard({
           <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
             {title}
           </h2>
-          <p className="text-gray-200 text-lg md:text-xl mb-8 leading-relaxed">
+          <p className="text-blue-50 font-medium text-lg md:text-xl mb-8 leading-relaxed">
             {description}
           </p>
-          <button className="px-8 py-3 bg-brand-blue text-white font-bold rounded-lg hover:shadow-xl hover:bg-blue-600 transition-all duration-300">
+          <button className="px-8 py-3 bg-white text-brand-blue font-bold rounded-lg hover:shadow-xl hover:bg-gray-100 transition-all duration-300">
             Learn More
           </button>
         </motion.div>

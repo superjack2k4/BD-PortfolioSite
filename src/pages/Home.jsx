@@ -1,12 +1,18 @@
 import { useRef } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring, useInView } from "framer-motion";
 import Navbar from "../layouts/Navbar";
 import HomeProjectCard from "../components/HomeProjectCard";
+import ImpactNumberCard from "../components/ImpactNumberCard";
 import HomeHero from "../layouts/HomeHero";
 // import Footer from "../layouts/Footer";
 
 export default function Home() {
   const targetRef = useRef(null);
+  const statsRef = useRef(null);
+  
+  // Trigger animation only when the stats section is completely in view (amount: 0.8)
+  const statsInView = useInView(statsRef, { once: true, amount: 0.8 });
+
   const { scrollYProgress } = useScroll({
     target: targetRef,
     offset: ["start start", "end end"],
@@ -59,34 +65,32 @@ export default function Home() {
         </section>
 
         {/* STATS SECTION (Moved below cards, added snap-start) */}
-        <motion.section 
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8 }}
-          className="py-24 bg-white border-y border-gray-100 snap-start shrink-0 min-h-screen flex items-center justify-center"
-        >
+        <section ref={statsRef} className="py-24 bg-white border-y border-gray-100 snap-start shrink-0 min-h-screen flex items-center justify-center">
           <div className="container mx-auto px-4 grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             {[
               { val: "1600+", label: "Active Members" },
               { val: "20", label: "Universities" },
               { val: "120+", label: "Countries" },
               { val: "75+", label: "Years Impact" },
-            ].map((stat, i) => (
-              <div
-                key={i}
-                className={i !== 0 ? "md:border-l border-gray-100" : ""}
-              >
-                <h2 className="text-4xl md:text-5xl font-black text-brand-blue mb-2">
-                  {stat.val}
-                </h2>
-                <p className="text-gray-500 font-medium text-lg uppercase tracking-wider">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
+            ].map((stat, i) => {
+              let borderClass = "";
+              // On small screens (2x2 grid), items 1 and 3 are on the right side, so they always get a left border.
+              if (i === 1 || i === 3) borderClass = "border-l-[3px] border-black";
+              // On large screens (4 columns), item 2 is in the middle instead of starting a new row, so it gets a left border ONLY on lg+.
+              if (i === 2) borderClass = "lg:border-l-[3px] border-black";
+
+              return (
+                <ImpactNumberCard
+                  key={i}
+                  val={stat.val}
+                  label={stat.label}
+                  borderClass={borderClass}
+                  startAnimation={statsInView}
+                />
+              );
+            })}
           </div>
-        </motion.section>
+        </section>
       </main>
 
       {/* Footer from your structure */}
