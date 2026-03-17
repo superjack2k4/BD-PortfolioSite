@@ -1,45 +1,67 @@
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Navbar from "../layouts/Navbar";
 import HomeProjectCard from "../components/HomeProjectCard";
-
+import HomeHero from "../layouts/HomeHero";
 // import Footer from "../layouts/Footer";
 
 export default function Home() {
+  const targetRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+  });
+
+  // Map vertical scroll (0 to 1) to horizontal translation (0% to -66.666%)
+  // 3 cards = 300vw. To show the last card, we need to shift left by 200vw. (200 / 300 = 66.666%)
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-66.66666%"]);
+
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
 
       <main className="flex-grow">
         {/* HERO SECTION */}
-        <section className="relative min-h-screen flex items-center bg-gray-900 overflow-hidden">
-          {/* Placeholder for Hero Image */}
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070')] bg-cover bg-center" />
-          {/* Background Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/30 z-10" />
+        <HomeHero />
 
-          <div className="container mx-auto px-4 md:px-6 relative z-20">
-            <div className="max-w-3xl text-center md:text-left">
-              <h1 className="text-center md:text-left text-4xl md:text-6xl font-extrabold text-white leading-tight">
-                Develop Leadership <br className="hidden md:block" /> While
-                Changing the World
-              </h1>
-              <p className="text-center md:text-left text-gray-200 mt-6 text-lg md:text-xl max-w-lg">
-                AIESEC is the world's largest youth-led organization, focused on
-                developing leadership through cross-cultural exchanges.
-              </p>
-              <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                <button className="px-8 py-4 bg-brand-blue text-white font-bold rounded-lg hover:shadow-xl hover:bg-blue-600 transition-all">
-                  Apply Now
-                </button>
-                <button className="px-8 py-4 bg-white/10 text-white backdrop-blur-md border border-white/30 font-bold rounded-lg hover:bg-white/20">
-                  Learn More
-                </button>
-              </div>
-            </div>
+        {/* HORIZONTAL CAROUSEL SECTION */}
+        <section ref={targetRef} className="relative h-[300vh] bg-gray-900">
+          {/* Sticky Container */}
+          <div className="sticky top-0 flex h-screen items-center overflow-hidden">
+            <motion.div style={{ x }} className="flex w-[300vw]">
+              <HomeProjectCard
+                title="Global Volunteer"
+                description="Contribute to the Sustainable Development Goals (SDGs) through a 6-8 week cross-cultural volunteer experience."
+                bgImage="/src/assets/homeCards/card1.webp"
+              />
+              <HomeProjectCard
+                title="Global Talent"
+                description="Develop your professional skills and gain a global perspective through a professional internship abroad."
+                bgImage="/src/assets/homeCards/card2.webp"
+              />
+              <HomeProjectCard
+                title="Global Teacher"
+                description="Gain international teaching experience and impact the world's future through education."
+                bgImage="/src/assets/homeCards/card3.webp"
+              />
+            </motion.div>
+          </div>
+
+          {/* Invisible Vertical Snap Points Overlay */}
+          <div className="absolute inset-0 pointer-events-none flex flex-col">
+            <div className="h-screen w-full snap-start" />
+            <div className="h-screen w-full snap-start" />
+            <div className="h-screen w-full snap-start" />
           </div>
         </section>
 
-        {/* STATS SECTION */}
-        <section className="py-12 bg-white border-b border-gray-100">
+        {/* STATS SECTION (Moved below cards, added snap-start) */}
+        <motion.section 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8 }}
+          className="py-24 bg-white border-y border-gray-100 snap-start shrink-0 min-h-screen flex items-center justify-center"
+        >
           <div className="container mx-auto px-4 grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             {[
               { val: "1600+", label: "Active Members" },
@@ -51,45 +73,16 @@ export default function Home() {
                 key={i}
                 className={i !== 0 ? "md:border-l border-gray-100" : ""}
               >
-                <h2 className="text-3xl md:text-4xl font-black text-brand-blue">
+                <h2 className="text-4xl md:text-5xl font-black text-brand-blue mb-2">
                   {stat.val}
                 </h2>
-                <p className="text-gray-500 font-medium text-sm mt-1">
+                <p className="text-gray-500 font-medium text-lg uppercase tracking-wider">
                   {stat.label}
                 </p>
               </div>
             ))}
           </div>
-        </section>
-
-        {/* PROJECTS SECTION */}
-        <section className="py-20 bg-gray-50">
-          <div className="container mx-auto px-4 md:px-6">
-            <h2 className="text-3xl font-bold mb-12 text-center md:text-left">
-              Explore Our Programs
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <HomeProjectCard
-                icon="✈️"
-                title="Global Volunteer"
-                description="Contribute to the Sustainable Development Goals (SDGs) through a 6-8 week cross-cultural volunteer experience."
-                duration="6-8 Weeks"
-              />
-              <HomeProjectCard
-                icon="💼"
-                title="Global Talent"
-                description="Develop your professional skills and gain a global perspective through a professional internship abroad."
-                duration="3-12 Months"
-              />
-              <HomeProjectCard
-                icon="🎓"
-                title="Global Teacher"
-                description="Gain international teaching experience and impact the world's future through education."
-                duration="9-78 Weeks"
-              />
-            </div>
-          </div>
-        </section>
+        </motion.section>
       </main>
 
       {/* Footer from your structure */}
