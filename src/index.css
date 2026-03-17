@@ -8,9 +8,15 @@
 }
 
 @layer base {
-  html, body {
-    @apply font-sans text-brand-dark antialiased;
+  html {
     scroll-snap-type: y mandatory;
-    overflow-x: hidden;
+    scrollbar-width: none;
   }
+  body {
+    @apply font-sans text-brand-dark antialiased;
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
 }

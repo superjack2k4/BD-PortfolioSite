@@ -9,6 +9,7 @@ export default function Home() {
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
+    offset: ["start start", "end end"],
   });
 
   // Map vertical scroll (0 to 1) to horizontal translation (0% to -66.666%)
