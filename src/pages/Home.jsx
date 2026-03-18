@@ -4,6 +4,9 @@ import Navbar from "../layouts/Navbar";
 import HomeProjectCard from "../components/HomeProjectCard";
 import ImpactNumberCard from "../components/ImpactNumberCard";
 import HomeHero from "../layouts/HomeHero";
+import card1 from "../assets/homeCards/card1.webp";
+import card2 from "../assets/homeCards/card2.webp";
+import card3 from "../assets/homeCards/card3.webp";
 // import Footer from "../layouts/Footer";
 
 export default function Home() {
@@ -41,17 +44,17 @@ export default function Home() {
               <HomeProjectCard
                 title="Global Volunteer"
                 description="Contribute to the Sustainable Development Goals (SDGs) through a 6-8 week cross-cultural volunteer experience."
-                bgImage="/src/assets/homeCards/card1.webp"
+                bgImage={card1}
               />
               <HomeProjectCard
                 title="Global Talent"
                 description="Develop your professional skills and gain a global perspective through a professional internship abroad."
-                bgImage="/src/assets/homeCards/card2.webp"
+                bgImage={card2}
               />
               <HomeProjectCard
                 title="Global Teacher"
                 description="Gain international teaching experience and impact the world's future through education."
-                bgImage="/src/assets/homeCards/card3.webp"
+                bgImage={card3}
               />
             </motion.div>
           </div>

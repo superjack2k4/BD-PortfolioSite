@@ -10,9 +10,10 @@ export default function HomeProjectCard({
       className="relative h-screen w-screen shrink-0 overflow-hidden"
     >
       {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${bgImage})` }}
+      <img
+        src={bgImage}
+        alt={title}
+        className="absolute inset-0 w-full h-full object-cover"
       />
       
       {/* Subtle dark gradient overlay so text is readable */}
