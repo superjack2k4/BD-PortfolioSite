@@ -7,6 +7,7 @@ import HomeHero from "../layouts/HomeHero";
 import card1 from "../assets/homeCards/card1.webp";
 import card2 from "../assets/homeCards/card2.webp";
 import card3 from "../assets/homeCards/card3.webp";
+import WhyJoinSection from "../components/WhyJoinSection";
 // import Footer from "../layouts/Footer";
 
 export default function Home() {
@@ -21,11 +22,13 @@ export default function Home() {
     offset: ["start start", "end end"],
   });
 
-  // Apply a smooth spring to the raw transform value to eliminate jitter during fast mobile snapping
-  const x = useSpring(useTransform(scrollYProgress, [0, 1], ["0%", "-66.66666%"]), {
-    stiffness: 100,
-    damping: 20,
-    mass: 0.5,
+  // Map raw continuous scroll directly
+  const baseTransform = useTransform(scrollYProgress, [0, 1], ["0%", "-66.66666%"]);
+  // Re-enable useSpring with a very tight, critically-damped configuration to prevent wobbling/bouncing
+  const x = useSpring(baseTransform, {
+    stiffness: 400,
+    damping: 50,
+    mass: 0.1,
   });
 
   return (
@@ -61,14 +64,14 @@ export default function Home() {
 
           {/* Invisible Vertical Snap Points Overlay */}
           <div className="absolute inset-0 pointer-events-none flex flex-col">
-            <div className="h-screen w-full snap-start" />
-            <div className="h-screen w-full snap-start" />
-            <div className="h-screen w-full snap-start" />
+            <div className="h-screen w-full snap-start snap-always" />
+            <div className="h-screen w-full snap-start snap-always" />
+            <div className="h-screen w-full snap-start snap-always" />
           </div>
         </section>
 
         {/* STATS SECTION (Moved below cards, added snap-start) */}
-        <section ref={statsRef} className="py-24 bg-white border-y border-gray-100 snap-start shrink-0 min-h-screen flex items-center justify-center">
+        <section ref={statsRef} className="py-24 bg-white border-y border-gray-100 shrink-0 min-h-screen flex items-center justify-center snap-start">
           <div className="container mx-auto px-4 grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             {[
               { val: "1600+", label: "Active Members" },
@@ -94,6 +97,9 @@ export default function Home() {
             })}
           </div>
         </section>
+
+        {/* WHY JOIN SECTION */}
+        <WhyJoinSection />
       </main>
 
       {/* Footer from your structure */}
