@@ -39,6 +39,34 @@ export default function Home() {
         {/* HERO SECTION */}
         <HomeHero />
 
+        {/* STATS SECTION */}
+        <section ref={statsRef} className="py-24 bg-white border-y border-gray-100 shrink-0 min-h-screen flex items-center justify-center snap-start">
+          <div className="container mx-auto px-4 grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+            {[
+              { val: "1600+", label: "Active Members" },
+              { val: "20", label: "Universities" },
+              { val: "120+", label: "Countries" },
+              { val: "75+", label: "Years Impact" },
+            ].map((stat, i) => {
+              let borderClass = "";
+              // On small screens (2x2 grid), items 1 and 3 are on the right side, so they always get a left border.
+              if (i === 1 || i === 3) borderClass = "border-l-[3px] border-black";
+              // On large screens (4 columns), item 2 is in the middle instead of starting a new row, so it gets a left border ONLY on lg+.
+              if (i === 2) borderClass = "lg:border-l-[3px] border-black";
+
+              return (
+                <ImpactNumberCard
+                  key={i}
+                  val={stat.val}
+                  label={stat.label}
+                  borderClass={borderClass}
+                  startAnimation={statsInView}
+                />
+              );
+            })}
+          </div>
+        </section>
+
         {/* HORIZONTAL CAROUSEL SECTION */}
         <section ref={targetRef} className="relative h-[300vh] bg-gray-900">
           {/* Sticky Container */}
@@ -70,34 +98,6 @@ export default function Home() {
             <div className="h-screen w-full snap-start snap-always" />
             <div className="h-screen w-full snap-start snap-always" />
             <div className="h-screen w-full snap-start snap-always" />
-          </div>
-        </section>
-
-        {/* STATS SECTION (Moved below cards, added snap-start) */}
-        <section ref={statsRef} className="py-24 bg-white border-y border-gray-100 shrink-0 min-h-screen flex items-center justify-center snap-start">
-          <div className="container mx-auto px-4 grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-            {[
-              { val: "1600+", label: "Active Members" },
-              { val: "20", label: "Universities" },
-              { val: "120+", label: "Countries" },
-              { val: "75+", label: "Years Impact" },
-            ].map((stat, i) => {
-              let borderClass = "";
-              // On small screens (2x2 grid), items 1 and 3 are on the right side, so they always get a left border.
-              if (i === 1 || i === 3) borderClass = "border-l-[3px] border-black";
-              // On large screens (4 columns), item 2 is in the middle instead of starting a new row, so it gets a left border ONLY on lg+.
-              if (i === 2) borderClass = "lg:border-l-[3px] border-black";
-
-              return (
-                <ImpactNumberCard
-                  key={i}
-                  val={stat.val}
-                  label={stat.label}
-                  borderClass={borderClass}
-                  startAnimation={statsInView}
-                />
-              );
-            })}
           </div>
         </section>
 
