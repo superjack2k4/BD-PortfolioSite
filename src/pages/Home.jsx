@@ -4,11 +4,11 @@ import Navbar from "../layouts/Navbar";
 import HomeProjectCard from "../components/HomeProjectCard";
 import ImpactNumberCard from "../components/ImpactNumberCard";
 import HomeHero from "../layouts/HomeHero";
-import card1 from "../assets/homeCards/card1.webp";
-import card2 from "../assets/homeCards/card2.webp";
-import card3 from "../assets/homeCards/card3.webp";
+import projectImg from "../assets/homeCards/project.jpg";
+import eventImg from "../assets/homeCards/event.jpg";
+import partnerImg from "../assets/homeCards/partner.jpg";
 import WhyJoinSection from "../components/WhyJoinSection";
-// import Footer from "../layouts/Footer";
+import Footer from "../layouts/Footer";
 
 export default function Home() {
   const targetRef = useRef(null);
@@ -45,19 +45,22 @@ export default function Home() {
           <div className="sticky top-0 flex h-screen items-center overflow-hidden">
             <motion.div style={{ x }} className="flex w-[300vw]">
               <HomeProjectCard
-                title="Global Volunteer"
-                description="Contribute to the Sustainable Development Goals (SDGs) through a 6-8 week cross-cultural volunteer experience."
-                bgImage={card1}
+                title="Global Projects"
+                description="Support initiatives that drive measurable impact while aligning your brand with global development goals."
+                bgImage={projectImg}
+                buttonText="Explore Projects"
               />
               <HomeProjectCard
-                title="Global Talent"
-                description="Develop your professional skills and gain a global perspective through a professional internship abroad."
-                bgImage={card2}
+                title="Events"
+                description="Engage with youth audiences through high-impact events that build visibility, connection, and brand presence."
+                bgImage={eventImg}
+                buttonText="View Events"
               />
               <HomeProjectCard
-                title="Global Teacher"
-                description="Gain international teaching experience and impact the world's future through education."
-                bgImage={card3}
+                title="Strategic Partnerships"
+                description="Collaborate with us to create long-term value, expand your reach, and drive meaningful impact together."
+                bgImage={partnerImg}
+                buttonText="Become a Partner"
               />
             </motion.div>
           </div>
@@ -103,7 +106,7 @@ export default function Home() {
       </main>
 
       {/* Footer from your structure */}
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

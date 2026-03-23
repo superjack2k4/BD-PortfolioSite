@@ -1,11 +1,14 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
+import globalConnection from "../assets/whyjoincard/globalConnection.jpg";
+import internship from "../assets/whyjoincard/internship.png";
+import hassleFree from "../assets/whyjoincard/hassleFree.webp";
+
 const cards = [
   {
     title: "Global Network",
-    description:
-      "Connect with a global network of 75,000+ youth and professionals across the world.",
+    image: globalConnection,
     bullets: [
       "Access opportunities in 120+ countries",
       "Build lifelong international friendships",
@@ -14,8 +17,7 @@ const cards = [
   },
   {
     title: "Skill Development",
-    description:
-      "Build leadership, communication, and professional skills through real-world experiences.",
+    image: internship,
     bullets: [
       "Hands-on leadership training",
       "Cross-cultural communication skills",
@@ -24,8 +26,7 @@ const cards = [
   },
   {
     title: "Hassle-Free Process",
-    description:
-      "We guide you through every step — from application to your exchange experience.",
+    image: hassleFree,
     bullets: [
       "Dedicated support throughout your journey",
       "Clear step-by-step application process",
@@ -49,12 +50,12 @@ export default function WhyJoinSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="text-center mb-14"
+          className="text-center mb-16 md:mb-20"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-brand-blue mb-3">
+          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-brand-blue mb-4">
             Why join
           </h2>
-          <p className="text-gray-500 text-base md:text-lg max-w-xl mx-auto">
+          <p className="text-gray-500 font-normal tracking-tight leading-relaxed text-base md:text-lg max-w-xl mx-auto">
             Discover the reasons thousands of young leaders choose AIESEC every
             year.
           </p>
@@ -83,31 +84,35 @@ export default function WhyJoinSection() {
                 duration-300
                 p-6 md:p-8
                 flex flex-col
-                gap-4
               "
             >
               {/* Accent bar */}
-              <div className="w-10 h-1 rounded-full bg-[#037ec3]" />
+              <div className="w-10 h-1.5 rounded-full bg-[#037ec3] mb-5" />
 
               {/* Title */}
-              <h3 className="text-xl font-semibold text-brand-dark">
+              <h3 className="text-xl md:text-2xl font-extrabold tracking-tight text-brand-dark mb-4">
                 {card.title}
               </h3>
 
-              {/* Description */}
-              <p className="text-gray-500 text-sm leading-relaxed">
-                {card.description}
-              </p>
+              {/* Image Edge-to-Edge with Overlay */}
+              <div className="relative w-[calc(100%+3rem)] md:w-[calc(100%+4rem)] -mx-6 md:-mx-8 h-48 md:h-56 overflow-hidden mt-1 mb-6">
+                <img 
+                  src={card.image} 
+                  alt={card.title} 
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/5 via-transparent to-black/30 pointer-events-none" />
+              </div>
 
               {/* Bullet points */}
-              <ul className="mt-auto flex flex-col gap-2">
+              <ul className="mt-auto flex flex-col gap-4">
                 {card.bullets.map((point) => (
                   <li
                     key={point}
-                    className="flex items-start gap-2 text-sm text-gray-600"
+                    className="flex items-start gap-3 text-sm md:text-base font-normal leading-relaxed text-gray-600"
                   >
                     <span
-                      className="mt-[5px] w-2 h-2 rounded-full shrink-0"
+                      className="mt-[6px] md:mt-[7px] w-2 h-2 rounded-full shrink-0"
                       style={{ backgroundColor: "#037ec3" }}
                     />
                     {point}

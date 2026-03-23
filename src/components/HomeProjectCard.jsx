@@ -4,6 +4,7 @@ export default function HomeProjectCard({
   title,
   description,
   bgImage,
+  buttonText = "Learn More",
 }) {
   return (
     <div 
@@ -16,6 +17,9 @@ export default function HomeProjectCard({
         className="absolute inset-0 w-full h-full object-cover"
       />
       
+      {/* Flat dark overlay across the whole image as requested */}
+      <div className="absolute inset-0 bg-black/40 z-[5]" />
+
       {/* Subtle dark gradient overlay so text is readable */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10" />
 
@@ -34,8 +38,8 @@ export default function HomeProjectCard({
           <p className="text-blue-50 font-medium text-lg md:text-xl mb-8 leading-relaxed">
             {description}
           </p>
-          <button className="px-8 py-3 bg-white text-brand-blue font-bold rounded-lg hover:shadow-xl hover:bg-gray-100 transition-all duration-300">
-            Learn More
+          <button className="px-8 py-3 bg-white text-brand-blue font-bold rounded-lg shadow-lg hover:shadow-2xl hover:bg-gray-50 hover:-translate-y-1 hover:scale-105 active:scale-95 transition-all duration-300">
+            {buttonText}
           </button>
         </motion.div>
       </div>
