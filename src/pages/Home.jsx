@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { motion, useScroll, useTransform, useSpring, useInView } from "framer-motion";
 import Navbar from "../layouts/Navbar";
 import HomeProjectCard from "../components/HomeProjectCard";
@@ -11,6 +11,13 @@ import WhyJoinSection from "../components/WhyJoinSection";
 import Footer from "../layouts/Footer";
 
 export default function Home() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+  }, []);
+
   const targetRef = useRef(null);
   const statsRef = useRef(null);
   

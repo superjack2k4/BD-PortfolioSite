@@ -74,16 +74,19 @@ export default function WhyJoinSection() {
                 delay: 0.7 + i * 0.2, // start after heading (0.7s)
               }}
               className="
+                group
                 flex-1
                 bg-gray-50
+                hover:bg-white
                 rounded-xl
                 border border-gray-200
                 shadow-sm
-                hover:shadow-md
-                transition-shadow
+                hover:shadow-2xl hover:-translate-y-2
+                transition-all
                 duration-300
                 p-6 md:p-8
                 flex flex-col
+                cursor-pointer
               "
             >
               {/* Accent bar */}
@@ -99,9 +102,9 @@ export default function WhyJoinSection() {
                 <img 
                   src={card.image} 
                   alt={card.title} 
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/5 via-transparent to-black/30 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/5 via-transparent to-black/30 pointer-events-none group-hover:opacity-60 transition-opacity duration-300" />
               </div>
 
               {/* Bullet points */}

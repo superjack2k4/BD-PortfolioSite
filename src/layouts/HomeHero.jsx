@@ -56,17 +56,7 @@ export default function HomeHero() {
               AIESEC is the world's largest youth-led organization, focused on
               developing leadership through cross-cultural exchanges.
             </motion.p>
-            <motion.div
-              variants={fadeSlide}
-              className="mt-10 flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
-            >
-              <button className="px-8 py-4 bg-brand-blue text-white font-bold rounded-lg hover:shadow-xl hover:bg-blue-600 transition-all duration-300 ">
-                Apply Now
-              </button>
-              <button className="px-8 py-4 bg-white/10 text-white backdrop-blur-md border border-white/30 font-bold rounded-lg hover:bg-white/20">
-                Learn More
-              </button>
-            </motion.div>
+
           </div>
         </div>
       </motion.div>
