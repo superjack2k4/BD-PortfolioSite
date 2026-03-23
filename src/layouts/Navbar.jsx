@@ -14,13 +14,16 @@ export default function Navbar() {
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8 font-medium text-gray-700">
-          <a href="#" className="hover:text-brand-blue">
+          <a href="/" className="hover:text-brand-blue">
+            Home
+          </a>
+          <a href="/about" className="hover:text-brand-blue">
             About Us
           </a>
-          <a href="#" className="hover:text-brand-blue">
+          <a href="/projects" className="hover:text-brand-blue">
             Projects
           </a>
-          <a href="#" className="hover:text-brand-blue">
+          <a href="/partnership" className="hover:text-brand-blue">
             Partners
           </a>
           <button className="bg-brand-blue text-white px-5 py-2 rounded-md hover:bg-blue-700 transition-colors">
@@ -40,8 +43,10 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden bg-white border-t p-4 flex flex-col gap-4 animate-in slide-in-from-top">
-          <a href="#">About Us</a>
-          <a href="#">Projects</a>
+          <a href="/">Home</a>
+          <a href="/about">About Us</a>
+          <a href="/projects">Projects</a>
+          <a href="/partnership">Partners</a>
           <button className="bg-brand-blue text-white py-2 rounded-md">
             Join Now
           </button>
