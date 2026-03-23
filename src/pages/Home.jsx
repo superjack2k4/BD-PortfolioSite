@@ -4,9 +4,9 @@ import Navbar from "../layouts/Navbar";
 import HomeProjectCard from "../components/HomeProjectCard";
 import ImpactNumberCard from "../components/ImpactNumberCard";
 import HomeHero from "../layouts/HomeHero";
-import projectImg from "../assets/homeCards/project.jpg";
-import eventImg from "../assets/homeCards/event.jpg";
-import partnerImg from "../assets/homeCards/partner.jpg";
+import projectImg from "../assets/homeCards/project.webp";
+import eventImg from "../assets/homeCards/event.webp";
+import partnerImg from "../assets/homeCards/partner.webp";
 import WhyJoinSection from "../components/WhyJoinSection";
 import Footer from "../layouts/Footer";
 
