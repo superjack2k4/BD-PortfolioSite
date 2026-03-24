@@ -25,15 +25,25 @@ const fadeSlide = {
   },
 };
 
-export default function HomeHero() {
+export default function HomeHero({
+  title = (
+    <>
+      Develop Leadership <br className="hidden sm:block" /> While
+      Changing the World
+    </>
+  ),
+  description = "AIESEC is the world's largest youth-led organization, focused on developing leadership through cross-cultural exchanges.",
+  customImages,
+}) {
+  const displayImages = customImages || images;
   const [currentImage, setCurrentImage] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % images.length);
+      setCurrentImage((prev) => (prev + 1) % displayImages.length);
     }, 5000); // Change image every 5 seconds
     return () => clearInterval(timer);
-  }, []);
+  }, [displayImages.length]);
 
   return (
     <section className="relative min-h-screen flex items-center bg-gray-900 overflow-hidden snap-start shrink-0">
@@ -44,7 +54,7 @@ export default function HomeHero() {
         className="w-full text-center sm:text-left"
       >
         {/* Looping Hero Images */}
-        {images.map((img, index) => (
+        {displayImages.map((img, index) => (
           <motion.div
             key={img}
             initial={{ opacity: 0, scale: 1 }}
@@ -70,16 +80,14 @@ export default function HomeHero() {
               variants={fadeSlide}
               className=" text-4xl md:text-6xl font-extrabold text-white leading-tight"
             >
-              Develop Leadership <br className="hidden sm:block" /> While
-              Changing the World
+              {title}
             </motion.h1>
 
             <motion.p
               variants={fadeSlide}
               className=" text-gray-200 mt-6 text-lg md:text-xl max-w-lg"
             >
-              AIESEC is the world's largest youth-led organization, focused on
-              developing leadership through cross-cultural exchanges.
+              {description}
             </motion.p>
           </div>
         </div>
