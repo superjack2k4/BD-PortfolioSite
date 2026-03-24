@@ -11,12 +11,12 @@ export default function About() {
 
   const aboutTitle = (
     <>
-      Crafting Excellence <br className="hidden sm:block" /> Together
+      Building Future Leaders <br className="hidden lg:block" /> Through Real-World Impact
     </>
   );
 
   const aboutDescription =
-    "At AIESEC we believe in the power of collaboration to achieve outstanding results. With a team of skilled leaders and a commitment to quality, we work hand-in-hand with our partners to bring ideas to life. Together, we create spaces and solutions that stand the test of time.";
+    "We connect young talent with meaningful experiences and organizations to create measurable impact in communities and businesses.";
 
   return (
     <div className="flex flex-col min-h-screen font-sans">
