@@ -3,6 +3,8 @@ import Footer from "../layouts/Footer";
 import React, { useEffect } from "react";
 import HomeHero from "../layouts/HomeHero";
 import heroSec1 from "../assets/heroSection/heroSec1.webp";
+import AboutStats from "../components/AboutStats";
+import AboutProducts from "../components/AboutProducts";
 
 export default function About() {
   useEffect(() => {
@@ -30,7 +32,8 @@ export default function About() {
           customImages={[heroSec1]} 
         />
         
-        {/* More about page content can go here below the hero */}
+        <AboutStats />
+        <AboutProducts />
       </main>
 
       <Footer />
