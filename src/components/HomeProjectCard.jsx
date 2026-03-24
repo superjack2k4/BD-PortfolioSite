@@ -1,11 +1,19 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 export default function HomeProjectCard({
   title,
   description,
   bgImage,
   buttonText = "Learn More",
+  linkTo,
 }) {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    if (linkTo) navigate(linkTo);
+  };
+
   return (
     <div 
       className="relative h-screen w-screen shrink-0 overflow-hidden"
@@ -38,7 +46,10 @@ export default function HomeProjectCard({
           <p className="text-blue-50 font-medium text-lg md:text-xl mb-8 leading-relaxed">
             {description}
           </p>
-          <button className="px-8 py-3 bg-white text-brand-blue font-bold rounded-lg shadow-lg hover:shadow-2xl hover:bg-gray-50 hover:-translate-y-1 hover:scale-105 active:scale-95 transition-all duration-300">
+          <button
+            onClick={handleClick}
+            className="px-8 py-3 bg-white text-brand-blue font-bold rounded-lg shadow-lg hover:shadow-2xl hover:bg-gray-50 hover:-translate-y-1 hover:scale-105 active:scale-95 transition-all duration-300"
+          >
             {buttonText}
           </button>
         </motion.div>
