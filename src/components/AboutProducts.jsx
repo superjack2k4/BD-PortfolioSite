@@ -3,6 +3,20 @@ import { motion } from 'framer-motion';
 import gvImg from '../assets/AboutUs/ProductCard/GlobalVolunteer.webp';
 import gtImg from '../assets/AboutUs/ProductCard/globalTalent.webp';
 import gteaImg from '../assets/AboutUs/ProductCard/GlobalTeacher.webp';
+import KelaniyaCarousel from './KelaniyaCarousel';
+import kel1 from '../assets/AboutUs/kelCarousel/ASH_0087.webp';
+import kel2 from '../assets/AboutUs/kelCarousel/IMG_0856.webp';
+import kel3 from '../assets/AboutUs/kelCarousel/IMG_0890.webp';
+import kel4 from '../assets/AboutUs/kelCarousel/IMG_5493-83.webp';
+import kel5 from '../assets/AboutUs/kelCarousel/_DSC7001.webp';
+
+const carouselImages = [
+  { id: 1, title: "Kelaniya Event 1", image: kel1 },
+  { id: 2, title: "Kelaniya Event 2", image: kel2 },
+  { id: 3, title: "Kelaniya Event 3", image: kel3 },
+  { id: 4, title: "Kelaniya Event 4", image: kel4 },
+  { id: 5, title: "Kelaniya Event 5", image: kel5 },
+];
 
 const products = [
   {
@@ -24,73 +38,43 @@ const products = [
 
 export default function AboutProducts() {
   return (
-    <section className="py-20 px-6 sm:px-10 lg:px-20 bg-[#f3f4f6] snap-start">
+    <section className="py-20 px-0 sm:px-10 lg:px-20 bg-[#f3f4f6] snap-start overflow-hidden">
       <div className="max-w-[1240px] mx-auto">
         
         {/* Top Header Section */}
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20 mb-16 lg:mb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-8 lg:gap-x-20 mb-20 lg:mb-28 items-center px-6 sm:px-0">
           
-          <div className="lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left">
+          <div className="lg:col-start-1 lg:row-start-1 flex flex-col items-center lg:items-start text-center lg:text-left">
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-3xl lg:text-[38px] font-bold text-gray-900 mb-6 tracking-tight leading-tight font-sans"
+              className="text-3xl lg:text-[38px] font-bold text-gray-900 tracking-tight leading-tight font-sans"
             >
               AIESEC in <span className="text-[#085bc6]">University of Kelaniya</span>
             </motion.h2>
-            
-            {/* Mobile Image (Hidden on Desktop) */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="w-full flex lg:hidden aspect-[16/9] relative rounded-[20px] overflow-hidden mb-6 mt-2"
-            >
-              <div className="absolute inset-0 bg-gray-200">
-                {/* Placeholder Image */}
-                <img 
-                  src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=2070&auto=format&fit=crop" 
-                  alt="University of Kelaniya Placeholder" 
-                  className="w-full h-full object-cover shadow-2xl"
-                />
-              </div>
-            </motion.div>
+          </div>
 
+          <div className="lg:col-start-2 lg:row-span-2 w-full flex justify-center lg:justify-end relative">
+            <KelaniyaCarousel images={carouselImages} />
+          </div>
+
+          <div className="lg:col-start-1 lg:row-start-2 flex flex-col items-center lg:items-start text-center lg:text-left">
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="text-gray-600 mb-6 text-[15px] lg:text-[16px] leading-[1.8] max-w-xl"
+              className="text-gray-600 text-[15px] lg:text-[16px] leading-[1.8] max-w-xl"
             >
               Driving excellence through focused exchange programs and leadership development within the Kelaniya community. We as an organization shape our members' leadership attributes by encouraging active participation in volunteer efforts and other impactful activities.
             </motion.p>
           </div>
-
-          {/* Right Desktop Image */}
-          <div className="hidden lg:flex lg:w-1/2 w-full justify-end relative">
-            <motion.div 
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="w-full max-w-[480px] aspect-[16/9] lg:aspect-[2/1] relative rounded-xl overflow-hidden shadow-xl"
-            >
-              <div className="absolute inset-0 bg-gray-200">
-                <img 
-                  src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=2070&auto=format&fit=crop" 
-                  alt="University of Kelaniya Placeholder Desktop" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </motion.div>
-          </div>
+          
         </div>
 
         {/* Our Products Section */}
-        <div>
+        <div className="px-6 sm:px-0">
           <motion.h3 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

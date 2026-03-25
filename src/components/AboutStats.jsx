@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import heroPageImg from '../assets/HeroPage2.webp';
 
 const stats = [
   { 
@@ -105,7 +106,7 @@ export default function AboutStats() {
           >
             <div className="absolute inset-0 bg-gray-200">
               <img 
-                src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070&auto=format&fit=crop" 
+                src={heroPageImg} 
                 alt="AIESEC students in Sri Lanka" 
                 className="w-full h-full object-cover shadow-2xl"
               />
@@ -157,7 +158,7 @@ export default function AboutStats() {
           >
             <div className="absolute inset-0 bg-gray-200">
               <img 
-                src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070&auto=format&fit=crop" 
+                src={heroPageImg} 
                 alt="AIESEC students in Sri Lanka" 
                 className="w-full h-full object-cover shadow-2xl"
               />
