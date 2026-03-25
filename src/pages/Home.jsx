@@ -90,6 +90,7 @@ export default function Home() {
                 description="Engage with youth audiences through high-impact events that build visibility, connection, and brand presence."
                 bgImage={eventImg}
                 buttonText="View Events"
+                linkTo="/Events"
               />
               <HomeProjectCard
                 title="Strategic Partnerships"
