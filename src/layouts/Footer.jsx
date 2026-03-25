@@ -2,7 +2,7 @@ import aiesecLogo from "../assets/logos/AIESEC-Logo.png";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#111] text-gray-300 py-12 px-4 md:px-8 snap-start">
+    <footer className="bg-[#111] text-gray-300 py-12 px-4 md:px-8">
       <div className="container mx-auto">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-5 gap-10">
