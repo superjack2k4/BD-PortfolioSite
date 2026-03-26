@@ -1,4 +1,5 @@
 import { useState } from "react";
+import aiesecLogo from "../assets/logos/AIESEC-Logo.png";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -7,10 +8,9 @@ export default function Navbar() {
     <nav className="bg-white border-b border-gray-100 sticky top-0 z-50">
       <div className="container mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <div className="font-bold text-2xl text-brand-blue tracking-tighter">
-          AIESEC <span className="text-gray-400">|</span>{" "}
-          <span className="text-sm font-normal text-gray-600">Sri Lanka</span>
-        </div>
+        <a href="/" className="flex items-center shrink-0">
+          <img src={aiesecLogo} alt="AIESEC Sri Lanka" className="h-8 md:h-10 w-auto object-contain" />
+        </a>
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8 font-medium text-gray-700">
@@ -26,7 +26,7 @@ export default function Navbar() {
           <a href="/events" className="hover:text-brand-blue">
             Events
           </a>
-          <a href="/partnership" className="hover:text-brand-blue">
+          <a href="/partner" className="hover:text-brand-blue">
             Partners
           </a>
           <button className="bg-brand-blue text-white px-5 py-2 rounded-md hover:bg-blue-700 transition-colors">
@@ -50,7 +50,7 @@ export default function Navbar() {
           <a href="/about">About Us</a>
           <a href="/projects">Projects</a>
           <a href="/events">Events</a>
-          <a href="/partnership">Partners</a>
+          <a href="/partner">Partners</a>
           <button className="bg-brand-blue text-white py-2 rounded-md">
             Join Now
           </button>

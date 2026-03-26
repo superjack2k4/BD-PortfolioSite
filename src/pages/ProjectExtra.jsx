@@ -7,7 +7,7 @@ import GlobalInternImg from "../assets/Partner/Global/GlobalIntern.webp";
 import GlobalTeachImg from "../assets/Partner/Global/GlobalTeach.webp";
 import globalVolunteerImg from "../assets/AboutUs/ProductCard/GlobalVolunteer.webp";
 
-export default function Partnership() {
+export default function ProjectExtra() {
   const fadeUp = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
