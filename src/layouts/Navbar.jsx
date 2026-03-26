@@ -1,4 +1,5 @@
 import { useState } from "react";
+import aiesecLogo from "../assets/logos/AIESEC-Logo.png";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -7,9 +8,11 @@ export default function Navbar() {
     <nav className="bg-white border-b border-gray-100 sticky top-0 z-50">
       <div className="container mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <div className="font-bold text-2xl text-brand-blue tracking-tighter">
-          AIESEC <span className="text-gray-400">|</span>{" "}
-          <span className="text-sm font-normal text-gray-600">Sri Lanka</span>
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          <img src={aiesecLogo} alt="AIESEC Logo" className="h-7 sm:h-10 md:h-12 object-contain" />
+          <span className="text-gray-800 font-medium text-[11px] sm:text-sm md:text-base">Sri Lanka</span>
+          <span className="text-gray-300 text-[10px] sm:text-sm">|</span>
+          <span className="text-gray-500 text-[10px] sm:text-xs md:text-sm">Colombo North</span>
         </div>
 
         {/* Desktop Links */}

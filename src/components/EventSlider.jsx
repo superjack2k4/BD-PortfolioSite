@@ -5,8 +5,8 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 
 /**
- * Full-screen immersive background image slider.
- * Used as the background layer of each EventSection.
+ * Bright image carousel for event sections.
+ * Rounded corners, crossfade, autoplay.
  */
 export default function EventSlider({ images = [], title = "" }) {
   if (!images.length) return null;
@@ -15,22 +15,23 @@ export default function EventSlider({ images = [], title = "" }) {
     <Swiper
       modules={[Autoplay, EffectFade]}
       effect="fade"
+      fadeEffect={{ crossFade: true }}
       loop={images.length > 1}
       autoplay={{
-        delay: 4000,
+        delay: 4500,
         disableOnInteraction: false,
       }}
       speed={1200}
       allowTouchMove={false}
-      className="event-slider"
+      className="ev-slider"
     >
       {images.map((src, i) => (
         <SwiperSlide key={i}>
-          <div
-            className="event-slider__img"
-            style={{ backgroundImage: `url(${src})` }}
-            role="img"
-            aria-label={`${title} - photo ${i + 1}`}
+          <img
+            src={src}
+            alt={`${title} - photo ${i + 1}`}
+            className="ev-slider__img"
+            loading="lazy"
           />
         </SwiperSlide>
       ))}
