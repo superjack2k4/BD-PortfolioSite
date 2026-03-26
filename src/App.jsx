@@ -4,7 +4,8 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Events from "./pages/Events";
 import Home from "./pages/Home";
-import Partnership from "./pages/Partnership";
+import ProjectExtra from "./pages/ProjectExtra";
+import Partner from "./pages/Partner";
 import ProjectDetails from "./pages/ProjectDetails";
 import Projects from "./pages/Projects";
 
@@ -17,7 +18,8 @@ export default function App() {
         <Route path="/Events" element={<Events />} />
         <Route path="/projectDetails" element={<ProjectDetails />} />
         <Route path="/about" element={<About />} />
-        <Route path="/partnership" element={<Partnership />} />
+        <Route path="/projectExtra" element={<ProjectExtra />} />
+        <Route path="/partner" element={<Partner />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
     </BrowserRouter>
