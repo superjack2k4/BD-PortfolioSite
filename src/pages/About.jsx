@@ -2,7 +2,9 @@ import Navbar from "../layouts/Navbar";
 import Footer from "../layouts/Footer";
 import React, { useEffect } from "react";
 import HomeHero from "../layouts/HomeHero";
-import heroSec1 from "../assets/heroSection/heroSec1.webp";
+import heroPageImg from "../assets/heroPage.webp";
+import AboutStats from "../components/AboutStats";
+import AboutProducts from "../components/AboutProducts";
 
 export default function About() {
   useEffect(() => {
@@ -27,10 +29,11 @@ export default function About() {
         <HomeHero 
           title={aboutTitle} 
           description={aboutDescription} 
-          customImages={[heroSec1]} 
+          customImages={[heroPageImg]} 
         />
         
-        {/* More about page content can go here below the hero */}
+        <AboutStats />
+        <AboutProducts />
       </main>
 
       <Footer />

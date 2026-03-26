@@ -23,6 +23,9 @@ export default function Navbar() {
           <a href="/projects" className="hover:text-brand-blue">
             Projects
           </a>
+          <a href="/events" className="hover:text-brand-blue">
+            Events
+          </a>
           <a href="/partnership" className="hover:text-brand-blue">
             Partners
           </a>
@@ -46,6 +49,7 @@ export default function Navbar() {
           <a href="/">Home</a>
           <a href="/about">About Us</a>
           <a href="/projects">Projects</a>
+          <a href="/events">Events</a>
           <a href="/partnership">Partners</a>
           <button className="bg-brand-blue text-white py-2 rounded-md">
             Join Now
