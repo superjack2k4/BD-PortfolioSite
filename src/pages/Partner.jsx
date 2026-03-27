@@ -6,6 +6,7 @@ import PartnerRequirements from "../components/PartnerRequirements";
 import WhyPartnerSection from "../components/WhyPartnerSection";
 import OurExpectations from "../components/OurExpectations";
 import PartnerCollage from "../components/PartnerCollage";
+import PMASection from "../components/PMASection";
 import PageIntroOverlay from "../components/PageIntroOverlay";
 import heroImg from "../assets/heroPage.webp";
 
@@ -74,6 +75,7 @@ export default function Partner() {
         <WhyPartnerSection />
         <OurExpectations />
         <PartnerCollage />
+        <PMASection />
       </main>
 
       <Footer />
