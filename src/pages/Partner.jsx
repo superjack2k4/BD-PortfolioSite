@@ -1,14 +1,27 @@
-import React, { useEffect } from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "../layouts/Navbar";
 import Footer from "../layouts/Footer";
 import PartnerRequirements from "../components/PartnerRequirements";
 import WhyPartnerSection from "../components/WhyPartnerSection";
 import OurExpectations from "../components/OurExpectations";
 import PartnerCollage from "../components/PartnerCollage";
+import PMASection from "../components/PMASection";
+import PageIntroOverlay from "../components/PageIntroOverlay";
 import heroImg from "../assets/heroPage.webp";
 
 export default function Partner() {
+  const [showIntro, setShowIntro] = useState(true);
+
+  useEffect(() => {
+    if (showIntro) {
+      const timer = setTimeout(() => {
+        setShowIntro(false);
+      }, 2500); // Overlay holds for 2.5s before fading out
+      return () => clearTimeout(timer);
+    }
+  }, [showIntro]);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -19,7 +32,11 @@ export default function Partner() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen font-sans bg-white overflow-hidden">
+    <div className="flex flex-col min-h-screen font-sans bg-white overflow-hidden relative">
+      <AnimatePresence>
+        {showIntro && <PageIntroOverlay prefix="Our" title="Partners" />}
+      </AnimatePresence>
+
       <Navbar />
 
       <main className="flex-grow">
@@ -58,6 +75,7 @@ export default function Partner() {
         <WhyPartnerSection />
         <OurExpectations />
         <PartnerCollage />
+        <PMASection />
       </main>
 
       <Footer />

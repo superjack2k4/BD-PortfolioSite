@@ -41,7 +41,7 @@ export default function WhyPartnerSection() {
           whileInView="visible"
           viewport={{ once: true, margin: '-80px' }}
           variants={titleVariants}
-          className="mb-14 text-center lg:text-left"
+          className="mb-14 text-center"
         >
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
             <span className="text-[#188bf6]">Why Partner</span>{' '}
